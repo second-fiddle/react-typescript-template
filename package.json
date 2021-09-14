@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "countdown-timer-custom-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,9 +10,15 @@
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "history": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router": "^6.0.0-beta.0",
+    "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "4.0.3",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "typescript": "^4.2.3",
     "web-vitals": "^1.1.1"
   },
@@ -53,6 +59,7 @@
   },
   "devDependencies": {
     "@types/prettier": "^2.2.3",
+    "@types/react-helmet": "^6.1.0",
     "@types/stylelint": "^9.10.1",
     "@types/testing-library__jest-dom": "^5.9.5",
     "@types/testing-library__user-event": "^4.2.0",
