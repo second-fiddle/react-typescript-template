@@ -1,0 +1,17 @@
+.authentication-form-container {
+  height: calc(100vh - 5px);
+
+  .column {
+    max-width: 450px;
+  }
+
+  form {
+    text-align: left;
+
+    > div.ui.segment {
+      padding-top: 2em;
+      padding-right: 2em;
+      padding-left: 2em;
+    }
+  }
+}
