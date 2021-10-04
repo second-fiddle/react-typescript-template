@@ -1,22 +1,13 @@
-import useShowPassword from 'hooks/molecules/elements/use-show-password';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { VFC } from 'react';
 import { Button, Form } from 'semantic-ui-react';
+import ErrorMessage from 'components/atoms/elements/ErrorMessage';
+import { InputFieldProps, RhfRegisterInputFieldProps } from './ElementProps';
+import useShowPassword from './hooks/useShowPassword';
 
-export type PasswordFieldProps = {
-  label?: string;
-  placeholder?: string;
-  showIcon: boolean;
-  error?: string;
-};
+type PasswordFieldProps = InputFieldProps & RhfRegisterInputFieldProps;
 
-const PasswordField: VFC<
-  PasswordFieldProps & React.HTMLProps<HTMLInputElement>
-> = ({
-  label = 'パスワード',
-  placeholder = 'パスワード',
-  showIcon = false,
-  ...props
-}) => {
+const PasswordField: VFC<PasswordFieldProps> = (props: PasswordFieldProps) => {
   const eyeIconPosition = {
     right: '1px',
     left: 'auto',
@@ -25,17 +16,33 @@ const PasswordField: VFC<
     paddingRight: 0,
     boxShadow: 'none',
   };
+  const {
+    label,
+    id,
+    placeholder,
+    isRequired,
+    showIcon,
+    errorMessage,
+    value,
+    onChange,
+    onBlur,
+  } = props;
+
   const [inputType, icon, showPassword] = useShowPassword();
 
-  const attrs: React.HTMLProps<HTMLInputElement> = props;
-  attrs.placeholder = placeholder;
-
   return (
-    <Form.Field required={attrs.required}>
-      {label && <label htmlFor={attrs.id}>{label}</label>}
+    <Form.Field required={isRequired}>
+      {label && <label htmlFor={id}>{label}</label>}
       {showIcon ? (
         <div className="ui left icon input">
-          <input {...attrs} type={inputType} />
+          <input
+            id={id}
+            placeholder={placeholder}
+            type={inputType}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+          />
           <i className="lock icon" />
           <Button basic onClick={showPassword} style={eyeIconPosition}>
             <i className={`eye ${icon} icon password-eye`} />
@@ -43,10 +50,18 @@ const PasswordField: VFC<
         </div>
       ) : (
         <div className="ui right icon input">
-          <input {...attrs} type={inputType} />
+          <input
+            id={id}
+            placeholder={placeholder}
+            type={inputType}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+          />
           <i className="eye slash icon" />
         </div>
       )}
+      <ErrorMessage message={errorMessage} />
     </Form.Field>
   );
 };

@@ -1,29 +1,41 @@
 import { VFC } from 'react';
-import { Form, FormInputProps } from 'semantic-ui-react';
+import ErrorMessage from 'components/atoms/elements/ErrorMessage';
+import { Form, Input } from 'semantic-ui-react';
+import { InputFieldProps, RhfRegisterInputFieldProps } from './ElementProps';
 
-type Props = {
-  label?: string;
-  placeholder?: string;
-  showIcon?: boolean;
-};
+type EmailFieldProps = InputFieldProps & RhfRegisterInputFieldProps;
 
-const EmailField: VFC<Props & FormInputProps> = ({
-  label = 'メールアドレス',
-  placeholder = 'メールアドレス',
-  showIcon = false,
-  ...props
-}) => {
+const EmailField: VFC<EmailFieldProps> = (props: EmailFieldProps) => {
+  const {
+    label,
+    id,
+    placeholder,
+    isRequired,
+    showIcon,
+    errorMessage,
+    value,
+    onChange,
+    onBlur,
+  } = props;
   const icon: string = showIcon ? 'mail' : '';
   const iconPosition: 'left' | undefined = showIcon ? 'left' : undefined;
 
   return (
-    <Form.Input
-      {...props}
-      placeholder={placeholder}
-      label={label}
-      icon={icon}
-      iconPosition={iconPosition}
-    />
+    <Form.Field required={isRequired}>
+      <label>{label}</label>
+      <Input
+        type="email"
+        id={id}
+        placeholder={placeholder}
+        icon={icon}
+        iconPosition={iconPosition}
+        error={!!errorMessage}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      <ErrorMessage message={errorMessage} />
+    </Form.Field>
   );
 };
 

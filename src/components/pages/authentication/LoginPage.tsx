@@ -1,31 +1,13 @@
 import { VFC } from 'react';
 import { Link } from 'react-router-dom';
-import { emailIconProps, emailProps } from 'components/atoms/elements';
 import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react';
 import PageTitle from 'components/molecules/authentication/PageTitle';
-import PasswordField from 'components/molecules/elements/PasswordField';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { YupJa as yup } from 'utils/validations/yup/i18n/YupJa';
+import { RhfEmailField, RhfPasswordField } from 'components/organisms/elements';
+import useLogin from './hooks/useLogin';
 import './AuthenticatinPage.scss';
 
-type FormValues = {
-  email: string;
-  password: string;
-};
-
-const schema = yup.object().shape({
-  email: yup.string().required(),
-  password: yup.string().required(),
-});
 const LoginPage: VFC = () => {
-  const { handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const handleLogin: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
-  };
+  const [control, handleSubmit, handleLogin] = useLogin();
 
   return (
     <Grid
@@ -37,8 +19,26 @@ const LoginPage: VFC = () => {
         <PageTitle title="ログイン" />
         <Form size="large" onSubmit={handleSubmit(handleLogin)}>
           <Segment raised>
-            <Form.Input {...emailProps} {...emailIconProps} required />
-            <PasswordField placeholder="パスワード" showIcon />
+            <RhfEmailField
+              id="email"
+              name="email"
+              placeholder="メールアドレス"
+              label="メールアドレス"
+              required
+              showIcon
+              control={control}
+            />
+
+            <RhfPasswordField
+              id="password"
+              name="password"
+              placeholder="パスワード"
+              label="パスワード"
+              required
+              showIcon
+              control={control}
+            />
+
             <Button color="teal" fluid size="large">
               ログイン
             </Button>
