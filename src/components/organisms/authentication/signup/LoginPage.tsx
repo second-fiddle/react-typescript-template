@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import { emailIconProps, emailProps } from 'components/atoms/elements';
+import { emailIconProps, emailProps } from 'components/atoms/controls/props';
 // import { PasswordField } from 'components/molecules/elements';
 
 const LoginPage: VFC = () => (

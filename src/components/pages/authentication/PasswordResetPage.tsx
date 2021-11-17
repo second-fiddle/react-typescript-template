@@ -1,8 +1,8 @@
-import PageTitle from 'components/molecules/authentication/PageTitle';
+import PageTitle from 'components/molecules/authentication/pageTitle';
 // import { PasswordField } from 'components/molecules/elements';
 import { VFC } from 'react';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
-import './AuthenticatinPage.scss';
+// import './AuthenticatinPage.scss';
 
 const PasswordResetPage: VFC = () => (
   <Grid

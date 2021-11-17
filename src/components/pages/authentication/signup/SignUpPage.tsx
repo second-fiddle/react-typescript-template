@@ -1,4 +1,4 @@
-import PageTitle from 'components/molecules/authentication/PageTitle';
+import PageTitle from 'components/molecules/authentication/pageTitle';
 import { VFC } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Grid, Segment } from 'semantic-ui-react';

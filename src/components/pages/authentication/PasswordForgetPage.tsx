@@ -1,8 +1,8 @@
 import { VFC } from 'react';
-import { emailIconProps, emailProps } from 'components/atoms/elements';
+import { emailIconProps, emailProps } from 'components/atoms/controls/props';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
-import './AuthenticatinPage.scss';
-import PageTitle from 'components/molecules/authentication/PageTitle';
+// import './AuthenticatinPage.scss';
+import PageTitle from 'components/molecules/authentication/pageTitle';
 
 const PasswordForgetPage: VFC = () => (
   <Grid
